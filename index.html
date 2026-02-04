@@ -77,11 +77,22 @@ button{padding:12px;border-radius:12px;font-weight:700;border:none;cursor:pointe
       <option value="white">أبيض</option>
       <option value="burgundy">برجندي</option>
       <option value="navy">كحلي</option>
+      <option value="darkblue">بترولي</option>
+      <option value="lightblue">لبني</option>
+      <option value="pink">بينك</option>
+      <option value="mauve">موف</option>
+      <option value="brown">بني</option>
+      <option value="beige">بيج</option>
+      <option value="camel">جملي</option>
+      <option value="olive">زيتي</option>
+      <option value="silver">فضي</option>
+      <option value="steel">حديدي</option>
     </select>
 
     <select name="size">
       <option>S</option><option>M</option><option>L</option>
       <option>XL</option><option>2XL</option><option>3XL</option>
+      <option>4XL</option><option>5XL</option><option>6XL</option>
     </select>
   </div>
 
@@ -115,13 +126,23 @@ document.getElementById("wa").href="https://wa.me/201013441857";
 const PRICE=600, SHIPPING=70;
 const qty=document.getElementById("qty");
 const total=document.getElementById("total");
-qty.oninput=()=>total.textContent=(PRICE*qty.value+SHIPPING);
+qty.oninput=()=>total.textContent=(PRICE*qty.value+SHIPPING)+" جنيه";
 
 const map={
   black:{ar:"أسود",en:"Black",img:"black.jpg"},
   white:{ar:"أبيض",en:"White",img:"white.jpg"},
   burgundy:{ar:"برجندي",en:"Burgundy",img:"burgundy.jpg"},
-  navy:{ar:"كحلي",en:"Navy",img:"navy.jpg"}
+  navy:{ar:"كحلي",en:"Navy",img:"navy.jpg"},
+  darkblue:{ar:"بترولي",en:"Petrol Blue",img:"darkblue.jpg"},
+  lightblue:{ar:"لبني",en:"Light Blue",img:"lightblue.jpg"},
+  pink:{ar:"بينك",en:"Pink",img:"pink.jpg"},
+  mauve:{ar:"موف",en:"Mauve",img:"mauve.jpg"},
+  brown:{ar:"بني",en:"Brown",img:"brown.jpg"},
+  beige:{ar:"بيج",en:"Beige",img:"beige.jpg"},
+  camel:{ar:"جملي",en:"Camel",img:"camel.jpg"},
+  olive:{ar:"زيتي",en:"Olive",img:"olive.jpg"},
+  silver:{ar:"فضي",en:"Silver",img:"silver.jpg"},
+  steel:{ar:"حديدي",en:"Charcoal",img:"steel.jpg"}
 };
 
 const sel=document.getElementById("color");
@@ -131,7 +152,9 @@ const en=document.getElementById("en");
 
 sel.onchange=()=>{
   const c=map[sel.value];
-  img.src=c.img; ar.textContent=c.ar; en.textContent=c.en;
+  img.src=c.img;
+  ar.textContent=c.ar;
+  en.textContent=c.en;
 };
 
 document.getElementById("payBtn").onclick=()=>{
@@ -151,4 +174,4 @@ document.getElementById("form").onsubmit=async e=>{
 </script>
 
 </body>
-</html>
+        </html>
