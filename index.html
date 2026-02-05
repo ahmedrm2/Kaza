@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaza Hoodie Order</title>
+
+<style>
+body{margin:0;font-family:system-ui,Arial;background:#fff;color:#111}
+.wrap{max-width:1100px;margin:auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:10px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase}
+.whats{border:1px solid #ddd;padding:8px 14px;border-radius:20px;text-decoration:none;color:#111;font-size:13px;background:#fff}
+.main{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.main{grid-template-columns:1fr}}
+.card{border:1px solid #e5e5e5;border-radius:18px;padding:18px;background:#f7f7f8}
+.preview img{width:100%;height:330px;object-fit:cover;border-radius:14px;background:#fff;border:1px solid #e5e5e5}
+.meta{margin-top:10px;display:flex;justify-content:space-between;font-size:14px;gap:10px;flex-wrap:wrap}
+.price{margin-top:14px;background:#fff;border:1px solid #ddd;border-radius:14px;padding:12px;font-size:14px}
+.price div{display:flex;justify-content:space-between;padding:6px 0;gap:10px}
+.old{color:#999;text-decoration:line-through}
+form{display:grid;gap:10px}
+input,select,textarea{padding:12px;border-radius:10px;border:1px solid #ddd;width:100%;background:#fff}
+textarea{min-height:80px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:500px){.row2{grid-template-columns:1fr}}
+button{padding:12px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+.primary{background:#111;color:#fff}
+.ghost{background:#fff;border:1px solid #ddd}
+.size-chart img{width:100%;border-radius:12px;border:1px solid #ddd;background:#fff}
+.pay{display:none;border:1px dashed #bbb;border-radius:14px;padding:14px;background:#fff}
+.pay.show{display:block}
+.hint{font-size:13px;line-height:1.7;color:#444;margin:6px 0 10px}
+.done{display:none;color:#065f46;font-size:14px;margin-top:6px}
+.done.show{display:block}
+.err{display:none;color:#b91c1c;font-size:14px;margin-top:6px}
+.err.show{display:block}
+.small{font-size:12.5px;color:#555;margin:6px 0 6px}
+.whBtn{display:inline-block;text-decoration:none;text-align:center;padding:11px 12px;border-radius:12px;border:1px solid #ddd;background:#fff;color:#111;font-weight:700}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Kaza</div>
+    <a class="whats" href="https://wa.me/201013441857" target="_blank" rel="noopener">واتساب للدعم</a>
+  </header>
+
+  <div class="main">
+    <!-- PREVIEW -->
+    <div class="card preview">
+      <h3 style="margin:0 0 10px">اختار اللون</h3>
+      <img id="img" src="black.jpg" alt="Preview">
+      <div class="meta">
+        <span>اللون: <b id="ar">أسود</b></span>
+        <span><b id="en">Black</b></span>
+      </div>
+
+      <div class="price">
+        <div><span>سعر الهودي</span><span><span class="old">750</span> <b>600</b></span></div>
+        <div><span>الشحن</span><span><b>70</b></span></div>
+        <div><b>الإجمالي</b><b id="total">670 جنيه</b></div>
+      </div>
+      <div class="small">الإجمالي = (600 × العدد) + 70 شحن.</div>
+    </div>
+
+    <!-- FORM -->
+    <div class="card">
+      <h3 style="margin:0 0 10px">بيانات الطلب</h3>
+
+      <form
+        id="form"
+        action="https://formspree.io/f/mnjzerra"
+        method="POST"
+      >
+        <div class="row2">
+          <input name="name" placeholder="الاسم" required>
+          <input name="phone" placeholder="رقم الموبايل" required>
+        </div>
+
+        <textarea name="address" placeholder="العنوان" required></textarea>
+
+        <div class="row2">
+          <select id="color" name="color" required>
+            <option value="black">أسود</option>
+            <option value="white">أبيض</option>
+            <option value="burgundy">برجندي</option>
+            <option value="navy">كحلي</option>
+            <option value="darkblue">بترولي</option>
+            <option value="lightblue">لبني</option>
+            <option value="pink">بينك</option>
+            <option value="mauve">موف</option>
+            <option value="brown">بني</option>
+            <option value="beige">بيج</option>
+            <option value="camel">جملي</option>
+            <option value="olive">زيتي</option>
+            <option value="silver">فضي</option>
+            <option value="steel">حديدي</option>
+          </select>
+
+          <select name="size" required>
+            <option value="">اختر المقاس</option>
+            <option>S</option><option>M</option><option>L</option>
+            <option>XL</option><option>2XL</option><option>3XL</option>
+            <option>4XL</option><option>5XL</option><option>6XL</option>
+          </select>
+        </div>
+
+        <div class="size-chart">
+          <img src="size-chart.jpg" alt="Size chart">
+        </div>
+
+        <div class="row2">
+          <input id="qty" type="number" name="qty" value="1" min="1" required>
+          <input name="notes" placeholder="ملاحظات (اختياري)">
+        </div>
+
+        <label class="small">طريقة الدفع</label>
+        <select id="payMethod" name="payment_method" required>
+          <option value="">اختر طريقة الدفع</option>
+          <option value="cod">كاش عند الاستلام</option>
+          <option value="wallet">محفظة</option>
+        </select>
+
+        <button type="button" class="ghost" id="payBtn">تابع للدفع</button>
+        <button type="submit" class="primary" id="submitBtn">تأكيد الطلب</button>
+
+        <div class="pay" id="pay">
+          <div id="depositNote" class="small" style="display:none;margin:0 0 10px">
+            ⚠️ عند اختيار <b>كاش عند الاستلام</b> لازم دفع <b>Deposit</b> قبل الشحن.
+          </div>
+
+          <p style="margin:0 0 6px">حوّل على الرقم <b>01144681150</b></p>
+          <div class="hint">
+            بعد التحويل: اكتب <b>رقمك اللي حولت منه</b>، ثم اضغط <b>إرسال سكرين على واتساب</b> وابعث سكرين التحويل.
+          </div>
+
+          <label class="small">رقمك اللي حولت منه</label>
+          <input name="sender_phone" id="sender_phone" placeholder="مثال: 010xxxxxxxx" inputmode="numeric" required>
+
+          <a class="whBtn" id="sendWa" target="_blank" rel="noopener">إرسال سكرين على واتساب</a>
+          <div class="small">* رفع الصور داخل الموقع غير متاح، لذلك السكرين يتم إرساله على واتساب.</div>
+        </div>
+
+        <div class="done" id="done">✔ تم إرسال الطلب بنجاح</div>
+        <div class="err" id="err">❌ افتح الدفع وكمل رقم التحويل قبل الإرسال</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====== CONFIG ====== */
+const WA_NUMBER = "201013441857";
+const PRICE = 600, SHIPPING = 70;
+
+/* ====== PRICING ====== */
+const qtyEl = document.getElementById("qty");
+const totalEl = document.getElementById("total");
+function updateTotal(){
+  const q = Math.max(1, parseInt(qtyEl.value || "1", 10));
+  qtyEl.value = q;
+  totalEl.textContent = (PRICE * q + SHIPPING) + " جنيه";
+}
+qtyEl.addEventListener("input", updateTotal);
+updateTotal();
+
+/* ====== COLORS ====== */
+const map = {
+  black:{ar:"أسود",en:"Black",img:"black.jpg"},
+  white:{ar:"أبيض",en:"White",img:"white.jpg"},
+  burgundy:{ar:"برجندي",en:"Burgundy",img:"burgundy.jpg"},
+  navy:{ar:"كحلي",en:"Navy",img:"navy.jpg"},
+  darkblue:{ar:"بترولي",en:"Petrol Blue",img:"darkblue.jpg"},
+  lightblue:{ar:"لبني",en:"Light Blue",img:"lightblue.jpg"},
+  pink:{ar:"بينك",en:"Pink",img:"pink.jpg"},
+  mauve:{ar:"موف",en:"Mauve",img:"mauve.jpg"},
+  brown:{ar:"بني",en:"Brown",img:"brown.jpg"},
+  beige:{ar:"بيج",en:"Beige",img:"beige.jpg"},
+  camel:{ar:"جملي",en:"Camel",img:"camel.jpg"},
+  olive:{ar:"زيتي",en:"Olive",img:"olive.jpg"},
+  silver:{ar:"فضي",en:"Silver",img:"silver.jpg"},
+  steel:{ar:"حديدي",en:"Charcoal",img:"steel.jpg"}
+};
+const sel = document.getElementById("color");
+const img = document.getElementById("img");
+const ar = document.getElementById("ar");
+const en = document.getElementById("en");
+function applyColor(){
+  const c = map[sel.value] || map.black;
+  img.src = c.img;
+  ar.textContent = c.ar;
+  en.textContent = c.en;
+}
+sel.addEventListener("change", applyColor);
+applyColor();
+
+/* ====== PAYMENT UI + WA MESSAGE ====== */
+const form = document.getElementById("form");
+const payBox = document.getElementById("pay");
+const payBtn = document.getElementById("payBtn");
+const doneMsg = document.getElementById("done");
+const errMsg = document.getElementById("err");
+const senderPhoneEl = document.getElementById("sender_phone");
+const waBtn = document.getElementById("sendWa");
+const submitBtn = document.getElementById("submitBtn");
+
+const payMethodEl = document.getElementById("payMethod");
+const depositNote = document.getElementById("depositNote");
+
+function showPay(){
+  payBox.classList.add("show");
+  payBox.scrollIntoView({behavior:"smooth", block:"center"});
+}
+payBtn.addEventListener("click", showPay);
+
+function updatePaymentUI(){
+  // نتحكم في ملاحظة الـ deposit فقط
+  if (payMethodEl.value === "cod") {
+    depositNote.style.display = "block";
+  } else {
+    depositNote.style.display = "none";
+  }
+  buildWaLink(); // تحديث رسالة واتساب
+}
+payMethodEl.addEventListener("change", updatePaymentUI);
+updatePaymentUI();
+
+
+function buildWaLink(){
+  const name = (form.querySelector('[name="name"]').value || "").trim();
+  const phone = (form.querySelector('[name="phone"]').value || "").trim();
+  const address = (form.querySelector('[name="address"]').value || "").trim();
+  const size = (form.querySelector('[name="size"]').value || "").trim();
+  const qty = (form.querySelector('[name="qty"]').value || "1").trim();
+  const sender = (senderPhoneEl.value || "").trim();
+  const payMethod = payMethodEl.value === "cod" ? "كاش عند الاستلام (مع Deposit)" :
+                    payMethodEl.value === "wallet" ? "محفظة" : "";
+
+  const color = map[sel.value]?.ar || sel.value;
+  const total = (PRICE * Math.max(1, parseInt(qty||"1",10)) + SHIPPING);
+
+  const msg =
+`Kaza Order (Screenshot Payment)
+الاسم: ${name}
+موبايل: ${phone}
+العنوان: ${address}
+طريقة الدفع: ${payMethod}
+اللون: ${color}
+المقاس: ${size}
+العدد: ${qty}
+رقم التحويل: ${sender}
+الإجمالي: ${total} جنيه
+
+ابعت سكرين التحويل هنا في نفس الشات.`;
+
+  waBtn.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+}
+["input","change"].forEach(ev=>{
+  form.addEventListener(ev, buildWaLink);
+});
+buildWaLink();
+
+/* ====== SUBMIT VALIDATION (before sending to Formspree) ====== */
+form.addEventListener("submit", function(e){
+  doneMsg.classList.remove("show");
+  errMsg.classList.remove("show");
+
+  // لازم يختار طريقة دفع
+  if (!payMethodEl.value) {
+    e.preventDefault();
+    errMsg.textContent = "❌ اختار طريقة الدفع الأول.";
+    errMsg.classList.add("show");
+    return;
+  }
+
+  // لازم الدفع يتفتح
+  if (!payBox.classList.contains("show")) {
+    e.preventDefault();
+    showPay();
+    errMsg.textContent = "❌ افتح الدفع وكمل رقم التحويل، ثم اضغط تأكيد الطلب.";
+    errMsg.classList.add("show");
+    return;
+  }
+
+  // لازم رقم التحويل
+  const sender = senderPhoneEl.value.trim();
+  if (!sender) {
+    e.preventDefault();
+    errMsg.textContent = "❌ لازم تكتب رقمك اللي حولت منه.";
+    errMsg.classList.add("show");
+    return;
+  }
+
+  // إظهار علامة الإرسال (Formspree هينقل لصفحة شكر بعد الإرسال)
+  submitBtn.disabled = true;
+  submitBtn.textContent = "جارٍ الإرسال...";
+  doneMsg.classList.add("show");
+});
+</script>
+
+</body>
+</html>
